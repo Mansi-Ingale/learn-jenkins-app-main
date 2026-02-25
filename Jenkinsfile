@@ -7,7 +7,7 @@ pipeline {
 
     stages{
 
-        
+        /*
         stage("Bild"){
 
             agent{
@@ -26,9 +26,8 @@ pipeline {
                 '''
             }
         }
+        */
         
-
-
         stage("Test"){
             parallel{
                 stage("UnitTest"){
