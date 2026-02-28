@@ -91,6 +91,25 @@ pipeline {
 
             }
         }
+
+        stage("Prod E2E"){
+            agent {
+                docker{
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
+                    reuseNode true
+                }
+            }
+
+            environment {
+                CI_ENVIRONMENT_URL = 'https://imaginative-faun-2f5e05.netlify.app'
+            }
+
+            steps{
+                '''
+                    npx playwright test --reporter=html
+                '''
+            }
+        }
         
     }
 
